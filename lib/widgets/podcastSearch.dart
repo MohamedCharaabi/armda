@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PodcastSearchIndex extends StatefulWidget {
-  String searchTerms;
+  final String searchTerms;
   PodcastSearchIndex({@required this.searchTerms});
 
   @override
@@ -267,7 +267,7 @@ class _PodcastSearchIndexState extends State<PodcastSearchIndex> {
                                         print(
                                             ' player ${provider.player.player}');
                                       } else {
-                                        null;
+                                        print('provider player === null');
                                       }
                                     });
                               },

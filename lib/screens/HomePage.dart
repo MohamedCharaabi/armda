@@ -41,23 +41,19 @@ class _HomePageState extends State<HomePage> {
   BannerAd banner;
   InterstitialAd interstitial;
 
-//   List<Object> itemList;
-//
-  // Future<InitializationStatus> _initGoogleMobileAds() {
-  //   // TODO: Initialize Google Mobile Ads SDK
-  //   return MobileAds.instance.initialize();
-  // }
-
+// ignore: todo
 // TODO: Add _kAdIndex
   static final _kAdIndex = 4;
 
+// ignore: todo
   // TODO: Add a BannerAd instance
   BannerAd _ad;
 
+// ignore: todo
   // TODO: Add _isAdLoaded
   bool _isAdLoaded = false;
 
-  // TODO: Add _getDestinationItemIndex()
+  //  Add _getDestinationItemIndex()
   int _getDestinationItemIndex(int rawIndex) {
     if (rawIndex >= _kAdIndex && _isAdLoaded) {
       return rawIndex - 1;
@@ -70,6 +66,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // itemList = List.from(fetchArticles('categorie'));
     //
+    // ignore: todo
     // TODO: Create a BannerAd instance
     _ad = BannerAd(
       adUnitId: AdHelper.bannerAdUnitIdTest,
@@ -88,10 +85,7 @@ class _HomePageState extends State<HomePage> {
           print('Ad load failed (code=${error.code} message=${error.message})');
         },
       ),
-    );
-
-    // TODO: Load an ad
-    _ad.load();
+    )..load();
   }
 
   @override
@@ -129,7 +123,7 @@ class _HomePageState extends State<HomePage> {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: red,
+      backgroundColor: honey,
       body: SingleChildScrollView(
         child: Container(
           // margin: E,
@@ -205,15 +199,15 @@ class _HomePageState extends State<HomePage> {
                                   alignment: Alignment.center,
                                 );
                               } else {
-                                final r = snapshot
+                                final data = snapshot
                                     .data[_getDestinationItemIndex(index)];
                                 New card = new New(
-                                  snapshot.data[index]['source']['name'],
-                                  snapshot.data[index]["author"],
-                                  snapshot.data[index]["title"],
-                                  snapshot.data[index]["description"],
-                                  snapshot.data[index]["url"],
-                                  snapshot.data[index]["urlToImage"],
+                                  data['source']['name'],
+                                  data["author"],
+                                  data["title"],
+                                  data["description"],
+                                  data["url"],
+                                  data["urlToImage"],
                                 );
                                 return NewCard(
                                   news: card,

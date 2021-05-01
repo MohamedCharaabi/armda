@@ -6,7 +6,7 @@ class AlertFormTodo extends StatefulWidget {
 }
 
 class _AlertFormTodoState extends State<AlertFormTodo> {
-  TextEditingController _controller = new TextEditingController();
+  // TextEditingController _controller = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {

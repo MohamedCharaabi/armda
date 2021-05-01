@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:o_color_picker/o_color_picker.dart';
 import 'package:toggle_bar/toggle_bar.dart';
 
+// ignore: must_be_immutable
 class MyDayForm extends StatefulWidget {
   Task task;
   MyDayForm({Key key, this.task}) : super(key: key);

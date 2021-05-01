@@ -2,9 +2,18 @@
     package="com.example.armada">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
    <application
         android:label="armada"
         android:icon="@mipmap/ic_launcher">
+
+         <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+        <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+       </intent-filter>
+        </receiver>
+        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -41,7 +50,7 @@
             android:value="2" /> 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4169620441162488~6202961363" />
+            android:value="ca-app-pub-4050786201991309~8200006104" />
 
 
     </application>

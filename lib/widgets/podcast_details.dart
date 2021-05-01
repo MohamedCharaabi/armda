@@ -5,7 +5,7 @@ import 'package:armada/helpers/utils.dart';
 import 'package:armada/models/IndexEpisode.dart';
 import 'package:armada/models/IndexPodcast.dart';
 import 'package:armada/models/PLayerProvider.dart';
-import 'package:armada/models/podcast.dart';
+// import 'package:armada/models/podcast.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class PodcastDetails extends StatefulWidget {
-  IndexPodcast podcast;
+  final IndexPodcast podcast;
   PodcastDetails({@required this.podcast});
   @override
   _PodcastDetailsState createState() => _PodcastDetailsState();
@@ -338,7 +338,7 @@ class _PodcastDetailsState extends State<PodcastDetails> {
                                         print(
                                             ' player ${provider.player.player}');
                                       } else {
-                                        null;
+                                        print('player === null');
                                       }
                                     });
                               },

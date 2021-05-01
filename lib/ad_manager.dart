@@ -35,7 +35,7 @@ class AdHelper {
 
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
-      return "ca-app-pub-4169620441162488/3385226336";
+      return "ca-app-pub-4050786201991309/1605843442";
     } else if (Platform.isIOS) {
       return "<YOUR_IOS_BANNER_AD_UNIT_ID>";
     } else {
@@ -45,7 +45,7 @@ class AdHelper {
 
   static String get nativeAdUnitId {
     if (Platform.isAndroid) {
-      return "ca-app-pub-4169620441162488/2372663038";
+      return "ca-app-pub-4050786201991309/4089386612";
     } else if (Platform.isIOS) {
       return "<YOUR_IOS_NATIVE_AD_UNIT_ID>";
     } else {
@@ -53,9 +53,9 @@ class AdHelper {
     }
   }
 
-  static String get InterstitialAdUnitId {
+  static String get interstitialAdUnitId {
     if (Platform.isAndroid) {
-      return 'ca-app-pub-4169620441162488/7627685683';
+      return 'ca-app-pub-4050786201991309/4069189406';
     } else if (Platform.isIOS) {
       return '--------------------------------------';
     }
@@ -72,6 +72,7 @@ class AdHelper {
       ad.dispose();
       print('Ad failed to load: $error');
     },
+
     // Called when an ad opens an overlay that covers the screen.
     onAdOpened: (Ad ad) => print('Ad opened.'),
     // Called when an ad removes an overlay that covers the screen.

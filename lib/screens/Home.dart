@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var navigationIndex = 0;
+  var navigationIndex = 2;
   AudioPlayer audioPlayer = AudioPlayer();
 
   @override
@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
     ];
 
     return Scaffold(
-      backgroundColor: violet,
+      // backgroundColor: violet,
       body: Stack(children: [
         layouts[navigationIndex],
         Positioned(
@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
                                       print(
                                           ' player ${provider.player.player}');
                                     } else {
-                                      null;
+                                      print('player == null');
                                     }
                                   });
                             },
@@ -148,8 +148,8 @@ class _HomeState extends State<Home> {
         ),
       ]),
       bottomNavigationBar: CurvedNavigationBar(
-        color: white,
-        backgroundColor: red,
+        color: Colors.transparent.withOpacity(0.5),
+        backgroundColor: honey,
         buttonBackgroundColor: white,
         height: 50,
         items: <Widget>[

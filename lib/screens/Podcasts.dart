@@ -1,23 +1,23 @@
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:armada/constants/theme.dart';
 import 'package:armada/helpers/utils.dart';
 import 'package:armada/models/IndexPodcast.dart';
-import 'package:armada/models/PLayerProvider.dart';
-import 'package:armada/models/Podcast.dart';
-import 'package:armada/models/podcast.dart';
+// import 'package:armada/models/PLayerProvider.dart';
+// import 'package:armada/models/Podcast.dart';
+// import 'package:armada/models/podcast.dart';
 import 'package:armada/widgets/podcast_details.dart';
 import 'package:armada/widgets/podcastSearch.dart';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:convert/convert.dart';
-import 'package:crypto/crypto.dart';
+// import 'package:convert/convert.dart';
+// import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:http/http.dart' as http;
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:provider/provider.dart';
+// import 'package:flutter_typeahead/flutter_typeahead.dart';
+// import 'package:http/http.dart' as http;
+// import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+// import 'package:provider/provider.dart';
 import 'package:toggle_bar/toggle_bar.dart';
 
 class News extends StatefulWidget {
@@ -51,7 +51,7 @@ class _NewsState extends State<News> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: red,
+      backgroundColor: honey,
       body: SafeArea(
         child: Stack(
           children: [
@@ -65,7 +65,10 @@ class _NewsState extends State<News> {
                   children: <Widget>[
                     Container(
                       width: width,
-                      color: white,
+                      decoration: BoxDecoration(
+                        color: white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -75,10 +78,27 @@ class _NewsState extends State<News> {
                               controller: _searchController,
                               style: TextStyle(color: black),
                               decoration: InputDecoration(
-                                filled: true,
-                                fillColor: white,
-                                focusColor: white,
+                                // filled: true,
+                                // fillColor: white,
+                                // focusColor: white,
+                                // icon: Icon(Icons.search),
                                 hintText: 'Enter Search',
+
+                                hintStyle: TextStyle(color: darkgrey),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    color: white,
+                                    width: 3,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide(
+                                    color: Colors.green,
+                                    width: 3,
+                                  ),
+                                ),
                               ),
                             ),
                           ),

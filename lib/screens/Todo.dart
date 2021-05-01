@@ -1,8 +1,9 @@
 import 'package:armada/constants/theme.dart';
 import 'package:armada/helpers/databaseHelper.dart';
+import 'package:armada/models/Project.dart';
 import 'package:armada/models/Task.dart';
 import 'package:armada/widgets/customAlert.dart';
-import 'package:armada/widgets/todoForm.dart';
+import 'package:armada/widgets/todoALertChoose.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -16,6 +17,7 @@ class Todo extends StatefulWidget {
 class _TodoState extends State<Todo> {
 //database
   Future<List<Task>> _taskList;
+  Future<List<Project>> _projectList;
 
   int todayTaskNumber;
 
@@ -23,11 +25,18 @@ class _TodoState extends State<Todo> {
   void initState() {
     super.initState();
     getListOfTasks();
+    getListOfProjects();
   }
 
   getListOfTasks() {
     setState(() {
       _taskList = DatabaseHelper.instance.getTasksList();
+    });
+  }
+
+  getListOfProjects() {
+    setState(() {
+      _projectList = DatabaseHelper.instance.getProjectsList();
     });
   }
 
@@ -40,14 +49,14 @@ class _TodoState extends State<Todo> {
     // print('Today => $today');
 
     return Scaffold(
-      backgroundColor: red,
+      backgroundColor: honey,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
                 // height: height * 0.2,
-                color: red,
+                color: honey,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -65,14 +74,15 @@ class _TodoState extends State<Todo> {
                         }),
                     TextButton.icon(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TodoForm()));
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return TodoAlertChoose();
+                            });
                       },
                       label: Text(
                         "Add",
-                        style: TextStyle(color: litegrey),
+                        style: TextStyle(color: white),
                       ),
                       icon: Icon(
                         Icons.add,
@@ -142,8 +152,8 @@ class _TodoState extends State<Todo> {
                       SizedBox(
                         height: 20,
                       ),
-                      FutureBuilder<List<Task>>(
-                          future: _taskList,
+                      FutureBuilder<List<Project>>(
+                          future: _projectList,
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return Center(child: CircularProgressIndicator());
@@ -170,7 +180,7 @@ class _TodoState extends State<Todo> {
                                   itemCount: snapshot.data.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    Task snap = snapshot.data[index];
+                                    Project snap = snapshot.data[index];
 
                                     // if (snap.start.month == today.month &&
                                     //     snap.start.day == today.day) {
@@ -204,7 +214,7 @@ class _TodoState extends State<Todo> {
   }
 
   Container buildTaskItem(
-      int numDays, String courseTitle, Color color, Task task) {
+      int numDays, String courseTitle, Color color, Project task) {
     int deadline = task.end.difference(DateTime.now()).inDays;
     Color deadLineColor = deadline < 3 ? color : Colors.green;
 
@@ -241,7 +251,7 @@ class _TodoState extends State<Todo> {
                 width: 5,
               ),
               Text(
-                '${deadline} days left',
+                '$deadline days left',
                 style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
@@ -407,64 +417,4 @@ class _TodoState extends State<Todo> {
       ),
     );
   }
-
-  // void showAlertDialog(BuildContext context) {
-  //   showDialog(
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         TextEditingController _emailControllerField = TextEditingController();
-  //         return CustomAlertDialog(
-  //           content: Container(
-  //             width: MediaQuery.of(context).size.width / 1.2,
-  //             height: MediaQuery.of(context).size.height / 4.5,
-  //             color: Colors.white,
-  //             child: Column(
-  //               children: <Widget>[
-  //                 Text("Insert Reset Email:"),
-  //                 TextField(
-  //                   controller: _emailControllerField,
-  //                   decoration: InputDecoration(
-  //                     focusedBorder: UnderlineInputBorder(
-  //                       borderSide: BorderSide(
-  //                         color: Colors.black,
-  //                       ),
-  //                     ),
-  //                     hintText: "something@example.com",
-  //                     labelText: "Email",
-  //                     labelStyle: TextStyle(
-  //                       color: Colors.black,
-  //                     ),
-  //                     hintStyle: TextStyle(
-  //                       color: Colors.black,
-  //                     ),
-  //                   ),
-  //                 ),
-  //                 Padding(
-  //                   padding: EdgeInsets.all(15),
-  //                   child: Material(
-  //                     elevation: 5.0,
-  //                     borderRadius: BorderRadius.circular(25.0),
-  //                     color: Color(0xff8c52ff),
-  //                     child: MaterialButton(
-  //                         minWidth: MediaQuery.of(context).size.width / 2,
-  //                         padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-  //                         child: Text(
-  //                           "Send Reset Email",
-  //                           textAlign: TextAlign.center,
-  //                           style: TextStyle(
-  //                             fontSize: 20.0,
-  //                             color: Colors.white,
-  //                             fontWeight: FontWeight.bold,
-  //                           ),
-  //                         ),
-  //                         onPressed: () {}),
-  //                   ),
-  //                 )
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //       });
-  // }
-
 }

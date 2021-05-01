@@ -135,7 +135,7 @@ Future<List<IndexEpisode>> fetchEpisodes(String feed) async {
 
   final response = await http.get(
       Uri.parse(
-          'https://api.podcastindex.org/api/1.0/episodes/byfeedurl?url=${feed}'),
+          'https://api.podcastindex.org/api/1.0/episodes/byfeedurl?url=$feed'),
       headers: headers);
 
   if (response.statusCode == 200) {
@@ -185,8 +185,7 @@ Future<List<IndexPodcast>> searchPodcasts(String terms) async {
   };
 
   final response = await http.get(
-      Uri.parse(
-          'https://api.podcastindex.org/api/1.0/search/byterm?q=${terms}'),
+      Uri.parse('https://api.podcastindex.org/api/1.0/search/byterm?q=$terms'),
       headers: headers);
 
   if (response.statusCode == 200) {

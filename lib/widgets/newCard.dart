@@ -1,6 +1,6 @@
 import 'package:armada/ad_manager.dart';
 import 'package:armada/constants/theme.dart';
-import 'package:armada/helpers/utils.dart';
+// import 'package:armada/helpers/utils.dart';
 import 'package:armada/models/AdsProvider.dart';
 import 'package:armada/models/New.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -31,7 +31,9 @@ class NewCard extends StatefulWidget {
 class _NewCardState extends State<NewCard> {
   InterstitialAd _interstitialAd;
 
+  // ignore: todo
   // TODO: Add _isAdLoaded
+  //
   bool _isAdLoaded = false;
 
   @override
@@ -53,10 +55,7 @@ class _NewCardState extends State<NewCard> {
           print('Ad load failed (code=${error.code} message=${error.message})');
         },
       ),
-    );
-
-    // TODO: Load an ad
-    _interstitialAd.load();
+    )..load();
   }
 
   @override
